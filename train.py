@@ -11,15 +11,24 @@ from transformers import AutoTokenizer
 
 parser = argparse.ArgumentParser(description="Conversation chatbot training by roberta")
 
-parser.add_argument("--batch_size", type=int, default=32, help="batch size for training (default: 32)")
-parser.add_argument("--n_epoch", type=int, default=20, help="epoch for trainig (default: 20)")
-parser.add_argument("--lr",type=float, default=5e-5, help="The initial learning rate")
+parser.add_argument("--batch_size", 
+                    type=int,
+                    default=32, 
+                    help="batch size for training (default: 32)")
+parser.add_argument("--n_epoch", 
+                    type=int,
+                    default=20, 
+                    help="epoch for trainig (default: 20)")
+parser.add_argument("--lr",
+                    type=float, 
+                    default=5e-5,
+                    help="The initial learning rate")
 
 args = parser.parse_args()
 
 tokenizer = AutoTokenizer.from_pretrained("klue/roberta-base")
 
-df = pd.read_csv("train_data.csv")
+df = pd.read_csv("./data/train_data.csv")
 df = df.astype({'Q': 'str','A': 'str'})
 
 batch_size = args.batch_size
