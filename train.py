@@ -1,13 +1,17 @@
-import pandas as pd
-import numpy as np
-from tqdm import tqdm
-import argparse
-import logging
 import torch
-from torch.utils.data import DataLoader
-from roberta2roberta import Roberta2Roberta
+import logging
+import argparse
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
 from makedataset import MakeDataset
 from transformers import AutoTokenizer
+from torch.utils.data import DataLoader
+from roberta2roberta import Roberta2Roberta
+
+#update dataset
+df = pd.read_csv("./data/train_data.csv")
+df = df.astype({'Q': 'str','A': 'str'})
 
 parser = argparse.ArgumentParser(description="Conversation chatbot training by roberta")
 
@@ -26,16 +30,13 @@ parser.add_argument("--lr",
 
 args = parser.parse_args()
 
+optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 tokenizer = AutoTokenizer.from_pretrained("klue/roberta-base")
-
-df = pd.read_csv("./data/train_data.csv")
-df = df.astype({'Q': 'str','A': 'str'})
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 batch_size = args.batch_size
 n_epoch = args.batch_size
 lr = args.lr
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 train_dataset = MakeDataset(df)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -43,11 +44,8 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 model = Roberta2Roberta()
 model.to(device)
 
-optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-
 losses = []
 epoch_ = []
-
 model.train()
 for epoch in range(n_epoch):
     count = 0
