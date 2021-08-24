@@ -46,15 +46,15 @@ Questioning & Answering set of each datasets
 
 ```pip install -r requirements.txt```
 
-```train.py --batch_size=32, --n_epoch=20, --lr=5e-5```
+```python train.py --batch_size=32, --n_epoch=20, --lr=5e-5```
 
 # How to chat
-```print_result.py  --chat```
+```python print_result.py  --chat=CHAT```
 ### example
 ![image](https://user-images.githubusercontent.com/67726968/130641935-5e7b10cd-edef-442a-922f-6732c86a15d3.png)
 
 # How to test
-```print_result.py --test```
+```python print_result.py --test=TEST```
 
 # References
 [AIHub sentiment conversation dataset](https://aihub.or.kr/aidata/7978)
