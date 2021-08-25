@@ -67,7 +67,7 @@ for epoch in range(n_epoch):
         count += 1
     epoch_loss = epoch_loss / count
 
-    torch.save(model.state_dict(),"./model/model_ver2.pt")
+    torch.save(model.state_dict(),"./model/roberta2roberta.pt")
 
     epoch_.append(epoch)
     losses.append(epoch_loss)
