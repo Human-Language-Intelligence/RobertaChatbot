@@ -61,8 +61,6 @@ Questioning & Answering set of each datasets
 
 [Songys's chatbot data](https://github.com/songys/Chatbot_data)
 
-[WellnessConversation-LanguageModel](https://github.com/nawnoes/WellnessConversation-LanguageModel)
-
 [Huggingface transformers](https://huggingface.co/transformers/index.html)
 
 [KLUE(Korean Language Understanding Evaluation)](https://arxiv.org/pdf/2105.09680.pdf)
