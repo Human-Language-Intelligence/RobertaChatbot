@@ -46,7 +46,7 @@ Questioning & Answering set of each datasets
 
 ```pip install -r requirements.txt```
 
-```python train.py --batch_size=32, --n_epoch=20, --lr=5e-5```
+```python train.py --batch_size=32 --n_epoch=20 --lr=5e-5```
 
 # How to chat
 ```python print_result.py  --chat=CHAT```
