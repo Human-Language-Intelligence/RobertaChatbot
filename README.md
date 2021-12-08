@@ -8,39 +8,11 @@ I want to fine-tuned KLUE-RoBERTa model, masked language model(MLM) to auto regr
 
 * KLUE-Roberta-base : using for pre-trained model, tokenizer
 * Encoder Decoder Models : used to initialize a sequence-to-sequence model with KLUE-Roberta-base model as the encoder and decoder. 
-* final model is Roberta to Roberta model
+* Final model is Roberta to Roberta model
 
 # Task
 ### KLUE-Roberta to Roberta Text Generation 
-#### 1. Data
-Questioning & Answering set of each datasets
 
-#### 2. generation
-```python
-    def generative(self, 
-        input_ids,
-        do_sample=True, 
-        max_length=50,
-        top_p=0.95,
-        top_k=80,
-        temperature=0.6, 
-        no_repeat_ngram_size=2,
-        num_return_sequence=3,
-        early_stopping = False
-        ):
-        return self.roberta.generate(
-            input_ids,
-            do_sample=do_sample,
-            max_length=max_length,
-            temperature=temperature,
-            top_k = top_k,
-            top_p = top_p,
-            no_repeat_ngram_size=no_repeat_ngram_size,
-            early_stopping=early_stopping
-
-        )
- 
-```
 # How to train
 ```git clone https://github.com/chaeyoon-jang/RobertaChatbot.git```
 
